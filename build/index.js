@@ -1,5 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function(mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -12,6 +12,8 @@ const cursosRoutes_1 = __importDefault(require("./routes/cursosRoutes"));
 const certificadosRoutes_1 = __importDefault(require("./routes/certificadosRoutes"));
 const loginRoutes_1 = __importDefault(require("./routes/loginRoutes"));
 const logRoutes_1 = __importDefault(require("./routes/logRoutes"));
+
+
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -41,6 +43,7 @@ class Server {
 }
 const server = new Server();
 server.start();
+
 function loginRoutes(arg0, loginRoutes) {
     throw new Error('Function not implemented.');
 }

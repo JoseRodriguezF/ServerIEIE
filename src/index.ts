@@ -9,6 +9,24 @@ import certificadosRoutes from './routes/certificadosRoutes';
 import loginRoute from './routes/loginRoutes';
 import logRoutes from './routes/logRoutes';
 
+var https = require('https');
+
+var fs = require('fs');
+var https_options = {
+
+    key: fs.readFileSync("/etc/pki/tls/certs/2020/udistrital.key"),
+  
+    cert: fs.readFileSync("/etc/pki/tls/certs/2020/STAR_udistrital_edu_co.crt"),
+  
+    ca: [
+  
+            fs.readFileSync('/etc/pki/tls/certs/2020/SectigoRSADomainValidationSecureServerCA.crt'),
+  
+            fs.readFileSync('/etc/pki/tls/certs/2020/USERTrustRSAAAACA.crt')
+  
+         ]
+  };
+
 class Server {
 
     public app: Application;
@@ -44,7 +62,9 @@ class Server {
 
 }
 const server = new Server();
-server.start();
+const httpsServer = https.createServer(https_options, server);
+httpsServer.listen(3000, 'https://ieie.udistrital.edu.co/api/');
+console.log('jksjda');
 
 function loginRoutes(arg0: string, loginRoutes: any) {
     throw new Error('Function not implemented.');
